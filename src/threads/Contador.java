@@ -3,6 +3,8 @@
  * and open the template in the editor.
  */
 package threads;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  *
@@ -12,19 +14,30 @@ public class Contador {
 	
 	//Valor que deve ser alterado pelas threads
 	public int contador = 0;
+    private Lock lock = new ReentrantLock();
 
-
-    // Utilizando a keyword 'synchronized' garantimos exclusao mutua entre threads
+    // Utilizamos lock para obter exclusao mutua, de modo que inc() e dec()
+    // passam a ser operacoes atomicas
 	//incremento
-    public synchronized void inc() {
-        contador++;
-        System.out.println("Thread Incremento " + getContador());
+    public void inc() {
+        lock.lock();
+        try {
+            contador++;
+            System.out.println("Thread Incremento: " + getContador());
+        } finally {
+            lock.unlock();
+        }
     }
 
 	//decremento
-    public synchronized void dec() {
-        contador--;
-        System.out.println("Thread Decremento " + getContador());
+    public void dec() {
+        lock.lock();
+        try {
+            contador--;
+            System.out.println("Thread Decremento: " + getContador());
+        } finally {
+            lock.unlock();
+        }
     }
     
     public int getContador(){
