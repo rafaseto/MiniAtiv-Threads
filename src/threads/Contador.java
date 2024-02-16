@@ -12,16 +12,20 @@ public class Contador {
 	
 	//Valor que deve ser alterado pelas threads
 	public int contador = 0;
-	
+
+
+    // Utilizando a keyword 'synchronized' garantimos exclusao mutua entre threads
 	//incremento
-    public void inc() {        
+    public synchronized void inc() {
+        contador++;
     }
 
 	//decremento
-    public void dec() {        
+    public synchronized void dec() {
+        contador--;
     }
     
     public int getContador(){
-        return 0;
+        return contador;
     }
 }
