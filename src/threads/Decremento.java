@@ -8,9 +8,15 @@ import java.util.concurrent.locks.Lock;
  *
  * @author JoãoPaulo
  */
+
+// Classe Decremento implementa a interface Runnable, de modo que pode
+// ser executada como uma thread
 public class Decremento implements Runnable{
 
+    // ref ao contador, de modo que Decremento pode acessar o recurso compartilhado
     private Contador contador;
+
+    // Objeto lock que garante exclusão mútua
     private Lock lock;
    
     public Decremento(Contador contador, Lock lock) {
@@ -18,14 +24,20 @@ public class Decremento implements Runnable{
         this.lock = lock;
     }
 
-    //onde irá ocorrer o decremento no contador
+    // Onde irá ocorrer o decremento no contador
+    // Contém o código que sera executado quando a thread é iniciada
     public void run() {
+        // Trava antes de acessar o contador compartilhado, de modo
+        // a garantir que apenas uma thread acesse a região crítica
         lock.lock();
+
+        // Decrementa 5 vezes o contador
         try {
             int i = 0;
             while (i < 5) {
                 contador.dec();
                 try {
+                    // Coloca a thread em espera por 1seg
                     Thread.sleep(1000);
                 } catch(InterruptedException e) {
                     e.printStackTrace();
@@ -33,11 +45,12 @@ public class Decremento implements Runnable{
                 i++;
             }
         } finally {
+            // Destrava após a utilização do contador compartilhado
             lock.unlock();
         }
     }
 
-    
+    // Método utilizado na classe Main para iniciar a execução da thread
     public void start() {
         new Thread(this).start();
     }
