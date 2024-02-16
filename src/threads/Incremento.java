@@ -10,13 +10,25 @@ package threads;
  */
 public class Incremento implements Runnable{
 
-    public Incremento(Contador c) {        
+    private Contador contador;
+    public Incremento(Contador contador) {
+        this.contador = contador;
     }
     
-    public void run() {        
+    public void run() {
+        int i = 0;
+        while(i < 5){
+            contador.inc();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            i++;
+        }
     }
 
     
-    public void start() {        
+    public void start() {
     }   
 }
