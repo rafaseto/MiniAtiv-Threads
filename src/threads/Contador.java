@@ -18,11 +18,13 @@ public class Contador {
 	//incremento
     public synchronized void inc() {
         contador++;
+        System.out.println("Thread Incremento " + getContador());
     }
 
 	//decremento
     public synchronized void dec() {
         contador--;
+        System.out.println("Thread Decremento " + getContador());
     }
     
     public int getContador(){
