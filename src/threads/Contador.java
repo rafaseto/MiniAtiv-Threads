@@ -21,6 +21,7 @@ public class Contador {
     public void dec() {        
     }
     
-    public int getContador(){        
+    public int getContador(){
+        return 0;
     }
 }

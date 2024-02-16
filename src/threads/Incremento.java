@@ -8,7 +8,7 @@ package threads;
  *
  * @author JoãoPaulo
  */
-public class Incremento{   
+public class Incremento implements Runnable{
 
     public Incremento(Contador c) {        
     }

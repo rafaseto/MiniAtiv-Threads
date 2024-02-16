@@ -8,7 +8,7 @@ package threads;
  *
  * @author JoãoPaulo
  */
-public class Decremento{
+public class Decremento implements Runnable{
    
     public Decremento(Contador p) {        
     }

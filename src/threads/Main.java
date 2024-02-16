@@ -14,7 +14,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Counter contador = new Counter();
+        Contador contador = new Contador();
 
         Incremento tgt1 = new Incremento(contador);
         Thread thread1 = new Thread(tgt1);
