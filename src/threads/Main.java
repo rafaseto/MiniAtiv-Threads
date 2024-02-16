@@ -6,7 +6,7 @@ package threads;
 
 /**
  *
- * @author JoãoPaulo
+ * @author Joï¿½oPaulo
  */
 public class Main {
 
@@ -14,7 +14,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*Crie duas threads. Execute o incremento cinco vezes no contador usando a thread 1. Em seguida faça o mesmo com o decremento usando a thread 2.
-         Execute as duas threads sem que uma interfira no processo da outra.*/
+        Counter contador = new Counter();
+
+        Incremento tgt1 = new Incremento(contador);
+        Thread thread1 = new Thread(tgt1);
+
+        Decremento tgt2 = new Decremento(contador);
+        Thread thread2 = new Thread(tgt2);
+
+        thread1.start();
+        thread2.start();
     }
 }
