@@ -1,4 +1,4 @@
-**! Mini projeto - Threads**
+**! Mini projeto - Threads --- Rafael Takeguma Goto --- 202100011833**
 
 Link repositório GitHub: https://github.com/rafaseto/MiniAtiv-Threads
 
