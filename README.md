@@ -1,6 +1,10 @@
 **! Mini projeto - Threads**
 
+Link repositório GitHub: https://github.com/rafaseto/MiniAtiv-Threads
+
 Este projeto demonstra o uso de threads em Java para manipulação segura de recursos compartilhados, utilizando exclusão mútua para evitar problemas de concorrência.
+
+
 
 **Classes:**
 
